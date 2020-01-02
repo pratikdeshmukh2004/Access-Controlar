@@ -1,0 +1,24 @@
+{
+  "name": "aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Pratik",
+  "license": "MIT",
+  "dependencies": {
+    "aws-s3": "^2.0.5",
+    "aws-sdk": "^2.596.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.4",
+    "mysql": "^2.17.1"
+  }
+}

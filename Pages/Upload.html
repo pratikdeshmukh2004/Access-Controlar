@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/jpg"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzeOvCtYVt2vbi_3ieypHt2bmY15TmpwJC9gUNGzqvtfOMfzAvjg&s">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Access Controlar</title>
+    <style>
+        body {
+            margin-top: 50px;
+        }
+
+        .files input {
+            outline: 2px dashed #92b0b3;
+            outline-offset: -10px;
+            -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+            transition: outline-offset .15s ease-in-out, background-color .15s linear;
+            padding: 120px 0px 85px 35%;
+            text-align: center !important;
+            margin: 0;
+            width: 100% !important;
+        }
+
+        .files input:focus {
+            outline: 2px dashed #92b0b3;
+            outline-offset: -10px;
+            -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+            transition: outline-offset .15s ease-in-out, background-color .15s linear;
+            border: 1px solid #92b0b3;
+        }
+
+        .files {
+            position: relative
+        }
+
+        .files:after {
+            pointer-events: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 50px;
+            right: 0;
+            height: 56px;
+            content: "";
+            background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+            display: block;
+            margin: 0 auto;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        .color input {
+            background-color: #f1f1f1;
+        }
+
+        .files:before {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: " or drag it here. ";
+            display: block;
+            margin: 0 auto;
+            color: #2ea591;
+            font-weight: 600;
+            text-transform: capitalize;
+            text-align: center;
+        }
+    </style>
+</head>
+<div class="container">
+    <div style="background-color: #e5e5e5; padding: 5px;">
+        <h3 class="text-center" style="font-weight: 700;">Add New Post.</h3>
+        <!-- <a style="color: red;" href="/post"><button><<< Go back</button> </a>  -->
+    </div>
+         <center>
+        <form enctype="multipart/form-data" action="/upload" method="POST" style="background-color: aliceblue;">
+            <br />
+            <div style="width: 200px;" class="form-group">
+                <input type="filename" name="name" class="form-control" placeholder="Name"
+                    required="required">
+            </div>
+            <div style="width: 350px;" class="form-group files color">
+                <label>Upload Your File </label>
+                <input name="image" type="file" class="form-control" required="red">
+            </div>
+            <input class="btn" value="Submit" type="submit" style="background-color: blue;color: white;border: 2px solid blue;margin-right: 20px;"></input >
+            <a href="/post"><button class="btn" type="button"style="background-color: red;color: white;border: 2px solid red;">Cancle</button type="button"></a>
+
+        </form>
+        </center>
+    </div>
+
+    <body>
+    </body>
+
+</html>

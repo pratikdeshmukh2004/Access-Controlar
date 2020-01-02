@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/jpg"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzeOvCtYVt2vbi_3ieypHt2bmY15TmpwJC9gUNGzqvtfOMfzAvjg&s">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Delete User</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/deleteuser" method="POST">
+        <br />
+        <div style="background-color: #e5e5e5; padding: 5px;">
+            <h3 class="text-center" style="font-weight: 700;">Delete User.</h3>
+        </div>
+        <div style="padding: 20px;" class="text-center">
+            <h4>Select User</h4>
+            <select name="Email" class="form-control">
+                <%for (var i of data){%>
+                    <%if (i.id !== 1){%>
+                        <option value="<%=i.email%>"><%=i.email%></option>
+                    <%}%>
+                <%}%>
+            </select>
+        </div>
+        <center>
+            <input class="btn" value="Delete" type="submit"
+                style="background-color: red;color: white;border: 2px solid red;margin-right: 20px;"></input>
+            <a href="/post"><button class="btn" type="button"
+                    style="background-color: blue;color: white;border: 2px solid blue;">Cancle</button
+                    type="button"></a>
+        </center>
+        </form>
+    </div>
+</body>
+
+</html>

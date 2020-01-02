@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/jpg"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzeOvCtYVt2vbi_3ieypHt2bmY15TmpwJC9gUNGzqvtfOMfzAvjg&s">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Access Controlar</title>
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="text-center">Welcome To Access Controlar</h3>
+        <% if (admin==1){%>
+            <div class="dropdown"><button style="margin-right: 20px;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Admin
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="/deleteuser">Delete-User</a></li>
+            <li><a href="/role">Give-Role</a></li>
+            <li><a href="/register">Create-User</a></li>
+        </ul></div> <% } %>
+        <br/>
+        <a href="/upload"><button class="btn" style="background-color: red;color: white;border: 2px solid red;float: left;">Add New
+                Post</button></a>
+        <a href="/logout"><button class="btn"
+                style="background-color: red;color: white;border: 2px solid red;float: right;">Logout</button></a>
+        <br />
+        <br />
+        <ol class="list-group">
+            <%for (var dict of data){ %>
+            <%if (dict.file_name.includes("jpeg")){%>
+            <li class="list-group-item">
+                <h3 style="cursor: pointer;" data-toggle="collapse" data-target="#<%=dict.id%>"><%=dict.file_name %>
+                </h3>
+                <div id="<%=dict.id%>" class="collapse">
+                    <a href="http://localhost:8090/deletepost/<%=dict.id%>"><i class='fas fa-trash'
+                            style='font-size:28px;float: right;margin-left: 50px;cursor: pointer;'></i></a>
+                    <a href="http://localhost:8090/editpost/<%=dict.id%>"><i class='far fa-edit'
+                            style='font-size:28px;float: right;cursor: pointer;'></i></a>
+                    <img width="290px" height="300px" src="<%=dict.url%>"><br /><br />
+                    <a href="<%=dict.url%>">Download</a><br /><br />
+                </div>
+            </li>
+            <% }else if(dict.file_name.includes("mp4")){ %>
+            <li class="list-group-item">
+                <h3 style="cursor: pointer;" data-toggle="collapse" data-target="#<%=dict.id%>"><%=dict.file_name %>
+                </h3>
+                <div id="<%=dict.id%>" class="collapse">
+                    <a href="http://localhost:8090/deletepost/<%=dict.id%>"><i class='fas fa-trash'
+                            style='font-size:28px;float: right;margin-left: 50px;cursor: pointer;'></i></a>
+                    <a href="http://localhost:8090/editpost/<%=dict.id%>"><i class='far fa-edit'
+                            style='font-size:28px;float: right;cursor: pointer;'></i></a>
+                    <video width="290px" height="300px" controls>
+                        <source src="<%=dict.url%>">
+                    </video>
+                </div>
+            </li>
+            <% }else if(dict.file_name.includes("mpeg") || dict.file_name.includes("mp3")){ %>
+            <li class="list-group-item">
+                <h3 style="cursor: pointer;" data-toggle="collapse" data-target="#<%=dict.id%>"><%=dict.file_name %>
+                </h3>
+                <div id="<%=dict.id%>" class="collapse">
+                    <a href="http://localhost:8090/deletepost/<%=dict.id%>"><i class='fas fa-trash'
+                            style='font-size:28px;float: right;margin-left: 50px;cursor: pointer;'></i></a>
+                    <a href="http://localhost:8090/editpost/<%=dict.id%>"><i class='far fa-edit'
+                            style='font-size:28px;float: right;cursor: pointer;'></i></a>
+                    <audio controls>
+                        <source src="<%=dict.url%>" type="audio/mpeg">
+                    </audio>
+                </div>
+            </li>
+            <% }else{ %>
+            <li class="list-group-item">
+                <h3 style="cursor: pointer;" data-toggle="collapse" data-target="#<%=dict.id%>"><%=dict.file_name %>
+                </h3>
+                <div id="<%=dict.id%>" class="collapse">
+                    <a href="http://localhost:8090/deletepost/<%=dict.id%>"><i class='fas fa-trash'
+                            style='font-size:28px;float: right;margin-left: 50px;cursor: pointer;'></i></a>
+                    <a href="http://localhost:8090/editpost/<%=dict.id%>"><i class='far fa-edit'
+                            style='font-size:28px;float: right;cursor: pointer;'></i></a>
+                    <h4>You can't see this format file...</h4>
+                    <a style="font-size: large;" href="<%=dict.url%>">Download</a>
+                </div>
+            </li>
+            <% } %>
+            <% } %>
+        </ol>
+
+    </div>
+</body>
+
+</html>
