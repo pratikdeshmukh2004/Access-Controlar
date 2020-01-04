@@ -35,12 +35,17 @@ module.exports = (app, knex, jwt) => {
             var token = req.headers.cookie.slice(16);
             jwt.verify(token, process.env.SECREAT, (err, data) => {
                 if (!err) {
-                    if (data.id == 1) {
-                        knex.select("*").from("users")
-                        .then((data)=>{
-                            res.render(process.cwd() + "/Pages/Deluser.ejs",{data:data})
-                        })
-                    }
+                    knex.select("*").from("users").where("id",data.id)
+                    .then((user)=>{
+                        if (user.role==="SuperAdmin"){
+                            knex.select("*").from("users").where("company",data.company)
+                            .then((data)=>{
+                                res.render(process.cwd() + "/Pages/Deluser.ejs",{data:data})
+                            })
+                        }else {
+                            res.render(process.cwd() + "/Pages/Error.ejs",{error:"Only Super Admin Can delete User"})
+                        }
+                    })
                 }
             })
         }

@@ -10,8 +10,7 @@ app.post('/upload', function(req, res){
               console.log(req.files,req.body);
               
               if (req.files !== undefined && req.body.name !== undefined){
-                var filename=req.body.name+"."+(req.files.image.mimetype.split("/")[1])
-                console.log(filename);
+                var filename=req.body.name+t_data.company+"."+(req.files.image.mimetype.split("/")[1])
                 knex.select("*").from("files").where("file_name",filename)
                 .then((isfile)=>{
                   if (isfile.length<1){                    
@@ -25,7 +24,7 @@ app.post('/upload', function(req, res){
                       if (perr) {
                         res.send(perr);
                       } else {
-                        knex("files").insert({user_id:t_data.id,file_name:filename,url:"https://acpkaplu.s3.ap-south-1.amazonaws.com/Pratik/"+filename})
+                        knex("files").insert({company:t_data.company, user_id:t_data.id,file_name:filename,url:"https://acpkaplu.s3.ap-south-1.amazonaws.com/Pratik/"+filename})
                         .then((id)=>{
                           res.redirect("/post")
                         })

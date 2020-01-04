@@ -9,7 +9,7 @@ module.exports = (login,knex,jwt)=>{
             .then((data)=>{
                 if (data.length>0){
                     if (data[0].password==req.body.Password){
-                        let token = jwt.sign({id:data[0].id},secret_key)
+                        let token = jwt.sign({id:data[0].id,company:data[0].company},secret_key)
                         res.cookie("accesscontrolar",token)
                         delete data[0].password
                         // res.send([{Success:data[0]}])

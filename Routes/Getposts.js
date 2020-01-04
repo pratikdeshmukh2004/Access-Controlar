@@ -9,7 +9,7 @@ module.exports = (app,knex,jwt)=>{
                         if(data[0].role === "SuperAdmin" || data[0].role==="Editor" || data[0].role==="Viewer" || data[0].role==="Admin"){
                             console.log(data);
                             
-                            knex.select("*").from("files")
+                            knex.select("*").from("files").where("company",t_data.company)
                             .then((data)=>{
                                 res.render(process.cwd()+"/Pages/Home.ejs",{data:data,admin:t_data.id})                          
                             })

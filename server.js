@@ -51,6 +51,10 @@ require("./Routes/Deluser")(deluser,knex,jwt)
 app.use(giverole = express.Router())
 require("./Routes/Giverole")(giverole,knex,jwt)
 
+app.use(Company = express.Router())
+require("./Routes/Company")(Company,knex,jwt)
+
+
 app.get('/',(req,res)=>{
     res.redirect('/login')
 })

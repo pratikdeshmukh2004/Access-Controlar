@@ -26,6 +26,7 @@ module.exports = (knex)=>{
                 u.string("email").notNullable();
                 u.string("password").notNullable();
                 u.string("role").notNullable();
+                u.integer("company").notNullable();
             })
             .then(()=>{console.log("table created")})
             .catch((err)=>{
@@ -43,6 +44,21 @@ module.exports = (knex)=>{
                 u.string("user_id").notNullable();
                 u.string("file_name").notNullable();
                 u.string("url").notNullable()
+                u.integer("company").notNullable();
+            })
+            .then(()=>{console.log("table created")})
+            .catch((err)=>{
+                console.log(err)
+            })
+        }
+    })    
+    knex.schema.hasTable('Company').then((exist)=>{
+        if (exist){
+            console.log("table already exists")
+        }else{
+            knex.schema.createTable("Company",(u)=>{
+                u.increments("id").primary();
+                u.string("company_name").notNullable();
             })
             .then(()=>{console.log("table created")})
             .catch((err)=>{

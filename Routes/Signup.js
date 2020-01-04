@@ -1,5 +1,5 @@
 module.exports = (superadmin,knex,jwt)=>{
-    superadmin.post("/register",(req,res)=>{
+    superadmin.post("/user",(req,res)=>{
         var body = req.body
         if (body.Email !== undefined && body.Password !== undefined && body.Role !== undefined){
             knex('users').select('*')
@@ -52,7 +52,7 @@ module.exports = (superadmin,knex,jwt)=>{
             res.render(process.cwd() + "/Pages/Error.ejs",{error:"Server Problem"})
         }
     })
-    superadmin.get("/register",(req,res)=>{
+    superadmin.get("/user",(req,res)=>{
         res.sendFile(process.cwd()+"/Pages/Signup.html")
     })
 }
